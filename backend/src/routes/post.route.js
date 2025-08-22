@@ -1,7 +1,8 @@
 import express from 'express';
-import { createPost, likePost, getPosts, getPost, getUserPosts } from '../controllers/post.controller.js';
+import { deletePost, createPost, likePost, getPosts, getPost, getUserPosts } from '../controllers/post.controller.js';
 import { protectedRoute } from '../middleware/auth.middleware.js';
 const router = express.Router();
+import upload from '../middleware/upload.middleware.js';
 
 // public routes
 router.get('/', getPosts);

@@ -1,6 +1,6 @@
 import express from 'express';
 import { followUser, getCurrentUser, getUserProfile, syncUser, updateProfile } from '../controllers/user.controller.js';
-import { protectRoute } from '../middleware/auth.middleware.js';
+import { protectedRoute } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
@@ -8,9 +8,9 @@ const router = express.Router();
 router.get('/profile/:username', getUserProfile);
 
 // protected routes
-router.post('/sync', protectRoute, syncUser);
-router.get('/me', protectRoute, getCurrentUser);
-router.put('/profile', protectRoute, updateProfile);
-router.post('/follow/:targetUserId', protectRoute, followUser);
+router.post('/sync', protectedRoute, syncUser);
+router.get('/me', protectedRoute, getCurrentUser);
+router.put('/profile', protectedRoute, updateProfile);
+router.post('/follow/:targetUserId', protectedRoute, followUser);
 
 export default router;
